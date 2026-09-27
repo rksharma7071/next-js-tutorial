@@ -1,0 +1,1495 @@
+========================================================================
+PROJECT: next-js-tutorial
+GENERATED: 2026-09-27T18:16:05.145Z
+FILES: 25
+========================================================================
+
+PROJECT STRUCTURE
+------------------------------------------------------------------------
+next-js-tutorial/
+├── app/
+│   ├── (user)/
+│   │   ├── about/
+│   │   │   ├── team/
+│   │   │   │   └── page.js
+│   │   │   ├── layout.js
+│   │   │   └── page.js
+│   │   ├── contact/
+│   │   │   └── page.js
+│   │   ├── service/
+│   │   │   ├── page.js
+│   │   │   └── service.module.css
+│   │   ├── layout.js
+│   │   └── page.js
+│   ├── admin/
+│   │   ├── about/
+│   │   │   ├── team/
+│   │   │   │   └── page.js
+│   │   │   ├── layout.js
+│   │   │   └── page.js
+│   │   ├── layout.js
+│   │   └── page.js
+│   ├── globals.css
+│   └── layout.js
+├── components/
+│   ├── Header.jsx
+│   └── ThemeToggle.jsx
+├── download-tailwind.mjs
+├── dump-project.mjs
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+└── README.md
+
+========================================================================
+FILE CONTENTS
+========================================================================
+
+########################################################################
+# FILE: app/(user)/about/layout.js
+########################################################################
+
+```javascript
+export default function AboutLayout({ children }) {
+    return (
+        <div>
+            {children}
+        </div>
+    );
+}
+```
+
+########################################################################
+# FILE: app/(user)/about/page.js
+########################################################################
+
+```javascript
+"use client";
+
+export default function About(){
+    return (
+        <div>
+            <h1>About Us Page</h1>
+        </div>
+    )
+}
+```
+
+########################################################################
+# FILE: app/(user)/about/team/page.js
+########################################################################
+
+```javascript
+export default function Team(){
+    return (
+        <div>
+            <h1>Team Page</h1>
+        </div>
+    )
+}
+```
+
+########################################################################
+# FILE: app/(user)/contact/page.js
+########################################################################
+
+```javascript
+export default function Contact(){
+    return (
+        <div>
+            <h1>Contact Page</h1>
+        </div>
+    )
+}
+```
+
+########################################################################
+# FILE: app/(user)/layout.js
+########################################################################
+
+```javascript
+import Header from "@/components/Header";
+
+export default function UsersLayout({ children }) {
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
+}
+```
+
+########################################################################
+# FILE: app/(user)/page.js
+########################################################################
+
+```javascript
+export default function Home() {
+  return (
+    <h1 className="text-2xl font-semibold">Home</h1>
+  );
+}
+```
+
+########################################################################
+# FILE: app/(user)/service/page.js
+########################################################################
+
+```javascript
+import Image from "next/image";
+
+const team = [
+  {
+    id: 1,
+    name: "Rahul Sharma",
+    role: "Senior Full Stack Developer",
+    image: "/men1.jpeg",
+    experience: "5+ Years Experience",
+  },
+  {
+    id: 2,
+    name: "Priya Verma",
+    role: "UI/UX Designer",
+    image: "/women1.jpg",
+    experience: "4+ Years Experience",
+  },
+  {
+    id: 3,
+    name: "Aman Kumar",
+    role: "Frontend Developer",
+    image: "/men2.jpg",
+    experience: "3+ Years Experience",
+  },
+  {
+    id: 4,
+    name: "Neha Singh",
+    role: "Backend Developer",
+    image: "/women2.jpg",
+    experience: "4+ Years Experience",
+  },
+];
+
+const services = [
+  {
+    title: "Web Development",
+    description:
+      "Modern, responsive and scalable websites built with the latest technologies.",
+    icon: "💻",
+  },
+  {
+    title: "Mobile Development",
+    description:
+      "Fast and user-friendly mobile applications for Android and iOS platforms.",
+    icon: "📱",
+  },
+  {
+    title: "UI/UX Design",
+    description:
+      "Clean and engaging user experiences designed around your business needs.",
+    icon: "🎨",
+  },
+];
+
+export default function Service() {
+  return (
+    <main className="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+      <section className="mx-auto max-w-6xl px-6 pb-20 pt-16">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
+          <span className="text-xs font-extrabold tracking-[2px] text-teal-600 dark:text-teal-500">
+            OUR TEAM
+          </span>
+
+          <h2 className="mt-2 font-work text-3xl font-bold sm:text-4xl">
+            Meet Our Experts
+          </h2>
+
+          <p className="mt-4 leading-7 text-slate-500 dark:text-slate-400">
+            A talented team of developers, designers and technology experts
+            working together to create great products.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((member) => (
+            <div
+              key={member.id}
+              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl
+                     dark:border-slate-800 dark:bg-slate-900
+                     dark:hover:border-slate-700 dark:hover:shadow-2xl dark:hover:shadow-teal-500/5"
+            >
+              <div className="relative h-72 w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/60" />
+              </div>
+
+              <div className="p-5 text-center">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                  {member.name}
+                </h3>
+
+                <p className="mt-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
+                  {member.role}
+                </p>
+
+                <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                  {member.experience}
+                </p>
+
+                <div className="mt-5 flex justify-center gap-2">
+                  {["in", "gh", "tw"].map((label) => (
+                    <a
+                      key={label}
+                      href="#"
+                      aria-label={label}
+                      className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-700 transition
+                             hover:bg-teal-50 hover:text-teal-600
+                             dark:bg-slate-800 dark:text-slate-300
+                             dark:hover:bg-slate-700 dark:hover:text-teal-400"
+                    >
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+```
+
+########################################################################
+# FILE: app/(user)/service/service.module.css
+########################################################################
+
+```css
+.servicePage {
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.hero {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+}
+
+.heroContent {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.hero h1 {
+    margin: 0 auto;
+    max-width: 800px;
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: 1.05;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: #60a5fa;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 24px auto 32px;
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.heroButton {
+    padding: 13px 24px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: #1e3a8a;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.heroButton:hover {
+    transform: translateY(-2px);
+    background: #dbeafe;
+}
+
+.servicesSection,
+.teamSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.sectionHeading {
+    max-width: 650px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.sectionHeading>span {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #2563eb;
+}
+
+.sectionHeading h2 {
+    margin: 10px 0;
+    font-size: 42px;
+    line-height: 1.2;
+}
+
+.sectionHeading p {
+    margin: 0;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.serviceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.serviceCard {
+    padding: 32px;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    background: white;
+    transition: 0.3s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-6px);
+    border-color: #bfdbfe;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.serviceIcon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    border-radius: 14px;
+    background: #eff6ff;
+    font-size: 28px;
+}
+
+.serviceCard h3 {
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.serviceCard p {
+    margin-bottom: 20px;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.serviceCard a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.teamGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.teamCard {
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    background: white;
+    transition: 0.3s ease;
+}
+
+.teamCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.imageWrapper {
+    height: 280px;
+    overflow: hidden;
+    background: #e2e8f0;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.teamCard:hover .imageWrapper img {
+    transform: scale(1.05);
+}
+
+.teamInfo {
+    padding: 22px;
+    text-align: center;
+}
+
+.teamInfo h3 {
+    margin: 0 0 7px;
+    font-size: 20px;
+}
+
+.role {
+    margin: 0 0 8px;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.experience {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.socialLinks {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.socialLinks a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.socialLinks a:hover {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+@media (max-width: 992px) {
+    .serviceGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .teamGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 75px 20px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .servicesSection,
+    .teamSection {
+        padding: 65px 20px;
+    }
+
+    .sectionHeading h2 {
+        font-size: 32px;
+    }
+
+    .serviceGrid,
+    .teamGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .imageWrapper {
+        height: 320px;
+    }
+}
+```
+
+########################################################################
+# FILE: app/admin/about/layout.js
+########################################################################
+
+```javascript
+export default function AboutLayout({ children }) {
+    return (
+        <div>
+            <h1>Admin About Layout</h1>
+            {children}
+        </div>
+    );
+}
+```
+
+########################################################################
+# FILE: app/admin/about/page.js
+########################################################################
+
+```javascript
+"use client";
+
+import { usePathname } from "next/navigation";
+
+export default function About(){
+    const pathname = usePathname();
+    return (
+        <div>
+            <h1>pathname: {pathname}</h1>
+            <h1>Admin About Us Page</h1>
+        </div>
+    )
+}
+```
+
+########################################################################
+# FILE: app/admin/about/team/page.js
+########################################################################
+
+```javascript
+export default function Team(){
+    return (
+        <div>
+            <h1>Team Page</h1>
+        </div>
+    )
+}
+```
+
+########################################################################
+# FILE: app/admin/layout.js
+########################################################################
+
+```javascript
+import { Geist, Geist_Mono } from "next/font/google";
+import "../globals.css";
+import Header from "@/components/Header.jsx";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <Header />
+        <h1></h1>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+########################################################################
+# FILE: app/admin/page.js
+########################################################################
+
+```javascript
+export default function Home() {
+  return (
+    <h1 className="text-2xl font-semibold">Admin Home</h1>
+  );
+}
+```
+
+########################################################################
+# FILE: app/globals.css
+########################################################################
+
+```css
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --radius: 0.75rem;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted: #18181b;
+    --muted-foreground: #a1a1aa;
+    --border: #27272a;
+    --accent: #60a5fa;
+    --accent-foreground: #0a0a0a;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-roboto: var(--font-roboto);
+  --font-work: var(--font-work-sans);
+
+  --radius-theme: var(--radius);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  min-height: 100dvh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+.main_heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  margin-block: 1rem;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--foreground);
+  background: linear-gradient(
+    135deg,
+    var(--muted) 0%,
+    color-mix(in oklab, var(--muted), var(--accent) 12%) 100%
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main_heading:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+```
+
+########################################################################
+# FILE: app/layout.js
+########################################################################
+
+```javascript
+import { Roboto, Work_Sans } from "next/font/google";
+import "./globals.css";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const roboto = Roboto({
+    subsets: ["latin"],
+    variable: "--font-roboto",
+    weight: ["400", "500", "700"],
+});
+
+const workSans = Work_Sans({
+    subsets: ["latin"],
+    variable: "--font-work-sans",
+    weight: ["400", "500", "600", "700"],
+});
+
+export const metadata = {
+    title: "Next JS Tutorial",
+    description: "Next.js Tutorial",
+};
+
+export default function RootLayout({ children }) {
+    return (
+        <html lang="en">
+            <head>
+                <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        try {
+                            const t = localStorage.getItem('theme');
+                            if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+                            document.documentElement.classList.add('dark');
+                            }
+                        } catch {}
+                        `,
+                }}
+            />
+            </head>
+            <body
+                className={`${roboto.variable} ${workSans.variable} flex flex-col`}
+            >
+                <ThemeToggle/>
+                {children}
+            </body>
+        </html>
+    );
+}
+```
+
+########################################################################
+# FILE: components/Header.jsx
+########################################################################
+
+```jsx
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
+
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Service", href: "/service" },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-transparent bg-white/80 backdrop-blur-md transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/80">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+        <Link
+          className="block text-teal-600 transition-colors hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
+          href="/"
+        >
+          <span className="sr-only">Home</span>
+          <svg
+            className="h-8"
+            viewBox="0 0 28 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M0.41 10.3847C1.14777 7.4194 2.85643 4.7861 5.2639 2.90424C7.6714 1.02234 10.6393 0 13.695 0C16.7507 0 19.7186 1.02234 22.1261 2.90424C24.5336 4.7861 26.2422 7.4194 26.98 10.3847H25.78C23.7557 10.3549 21.7729 10.9599 20.11 12.1147C20.014 12.1842 19.9138 12.2477 19.81 12.3047H19.67C19.5662 12.2477 19.466 12.1842 19.37 12.1147C17.6924 10.9866 15.7166 10.3841 13.695 10.3841C11.6734 10.3841 9.6976 10.9866 8.02 12.1147C7.924 12.1842 7.8238 12.2477 7.72 12.3047H7.58C7.4762 12.2477 7.376 12.1842 7.28 12.1147C5.6171 10.9599 3.6343 10.3549 1.61 10.3847H0.41ZM23.62 16.6547C24.236 16.175 24.9995 15.924 25.78 15.9447H27.39V12.7347H25.78C24.4052 12.7181 23.0619 13.146 21.95 13.9547C21.3243 14.416 20.5674 14.6649 19.79 14.6649C19.0126 14.6649 18.2557 14.416 17.63 13.9547C16.4899 13.1611 15.1341 12.7356 13.745 12.7356C12.3559 12.7356 11.0001 13.1611 9.86 13.9547C9.2343 14.416 8.4774 14.6649 7.7 14.6649C6.9226 14.6649 6.1657 14.416 5.54 13.9547C4.4144 13.1356 3.0518 12.7072 1.66 12.7347H0V15.9447H1.61C2.39051 15.924 3.154 16.175 3.77 16.6547C4.908 17.4489 6.2623 17.8747 7.65 17.8747C9.0377 17.8747 10.392 17.4489 11.53 16.6547C12.1468 16.1765 12.9097 15.9257 13.69 15.9447C14.4708 15.9223 15.2348 16.1735 15.85 16.6547C16.9901 17.4484 18.3459 17.8738 19.735 17.8738C21.1241 17.8738 22.4799 17.4484 23.62 16.6547ZM23.62 22.3947C24.236 21.915 24.9995 21.664 25.78 21.6847H27.39V18.4747H25.78C24.4052 18.4581 23.0619 18.886 21.95 19.6947C21.3243 20.156 20.5674 20.4049 19.79 20.4049C19.0126 20.4049 18.2557 20.156 17.63 19.6947C16.4899 18.9011 15.1341 18.4757 13.745 18.4757C12.3559 18.4757 11.0001 18.9011 9.86 19.6947C9.2343 20.156 8.4774 20.4049 7.7 20.4049C6.9226 20.4049 6.1657 20.156 5.54 19.6947C4.4144 18.8757 3.0518 18.4472 1.66 18.4747H0V21.6847H1.61C2.39051 21.664 3.154 21.915 3.77 22.3947C4.908 23.1889 6.2623 23.6147 7.65 23.6147C9.0377 23.6147 10.392 23.1889 11.53 22.3947C12.1468 21.9165 12.9097 21.6657 13.69 21.6847C14.4708 21.6623 15.2348 21.9135 15.85 22.3947C16.9901 23.1884 18.3459 23.6138 19.735 23.6138C21.1241 23.6138 22.4799 23.1884 23.62 22.3947Z"
+              fill="currentColor"
+            />
+          </svg>
+        </Link>
+
+        <div className="flex flex-1 items-center justify-end md:justify-between">
+          <nav aria-label="Global" className="hidden md:block">
+            <ul className="flex items-center gap-6 text-sm">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    className="font-medium text-gray-600 transition-colors hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400"
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-3 sm:flex">
+              <Link
+                className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-teal-700 hover:shadow-md dark:bg-teal-500 dark:hover:bg-teal-400"
+                href="/login"
+              >
+                Login
+              </Link>
+              <Link
+                className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition
+                           hover:bg-gray-200 hover:text-teal-700
+                           dark:bg-slate-800 dark:text-teal-400
+                           dark:hover:bg-slate-700 dark:hover:text-teal-300
+                           sm:block"
+                href="/register"
+              >
+                Register
+              </Link>
+            </div>
+
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-label="Toggle menu"
+              className="block rounded-md bg-gray-100 p-2.5 text-gray-600 transition
+                         hover:bg-gray-200 hover:text-gray-800
+                         dark:bg-slate-800 dark:text-slate-300
+                         dark:hover:bg-slate-700 dark:hover:text-slate-100
+                         md:hidden"
+            >
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                {open ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {open && (
+        <nav
+          aria-label="Mobile"
+          className="border-t border-gray-100 bg-white px-4 py-4 transition-colors
+                     dark:border-slate-800 dark:bg-slate-950 md:hidden"
+        >
+          <ul className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-4 py-2.5 text-sm font-medium text-gray-600 transition
+                             hover:bg-gray-50 hover:text-teal-600
+                             dark:text-slate-400 dark:hover:bg-slate-900 dark:hover:text-teal-400"
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li className="mt-3 flex gap-3 sm:hidden">
+              <Link
+                href="/login"
+                className="flex-1 rounded-md bg-teal-600 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:bg-teal-700
+                           dark:bg-teal-500 dark:hover:bg-teal-400"
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="flex-1 rounded-md bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-teal-600 transition
+                           hover:bg-gray-200
+                           dark:bg-slate-800 dark:text-teal-400 dark:hover:bg-slate-700"
+              >
+                Register
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </header>
+  );
+}
+```
+
+########################################################################
+# FILE: components/ThemeToggle.jsx
+########################################################################
+
+```jsx
+"use client";
+import { useEffect, useState } from "react";
+
+export function ThemeToggle() {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setDark(isDark);
+  }, []);
+
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
+
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Toggle theme"
+      className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50
+                 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+    >
+      {dark ? "☀️ Light" : "🌙 Dark"}
+    </button>
+  );
+}
+```
+
+########################################################################
+# FILE: download-tailwind.mjs
+########################################################################
+
+```javascript
+// download-tailwind.mjs
+// Fetches the complete Tailwind CSS file and saves it to code.txt
+// Requires Node.js 18+ (uses built-in fetch)
+
+import { writeFile } from "node:fs/promises";
+
+// ---- Choose your build target ----
+const TARGETS = {
+  // Tailwind v4 — full compiled browser bundle (includes everything)
+  v4: "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.global.js",
+
+  // Tailwind v3 — full Play CDN script (JIT engine in browser)
+  v3: "https://cdn.tailwindcss.com/3.4.16",
+
+  // Tailwind v2 — full compiled CSS (utility classes baked in)
+  v2: "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css",
+};
+
+// Change this to "v3" or "v2" if you need an older version
+const VERSION = "v4";
+const OUTPUT_FILE = "code.txt";
+
+async function downloadTailwind() {
+  const url = TARGETS[VERSION];
+  if (!url) {
+    console.error(`❌ Unknown version "${VERSION}". Use one of: ${Object.keys(TARGETS).join(", ")}`);
+    process.exit(1);
+  }
+
+  console.log(`⬇️  Fetching Tailwind (${VERSION}) from:\n   ${url}\n`);
+
+  try {
+    const start = Date.now();
+    const res = await fetch(url);
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    }
+
+    const content = await res.text();
+    const sizeKB = (Buffer.byteLength(content) / 1024).toFixed(2);
+    const timeMs = Date.now() - start;
+
+    // Add a small header so the file is self-documenting
+    const header = `/* =========================================================
+ * Tailwind CSS — ${VERSION}
+ * Source: ${url}
+ * Downloaded: ${new Date().toISOString()}
+ * Size: ${sizeKB} KB
+ * ========================================================= */
+
+`;
+
+    await writeFile(OUTPUT_FILE, header + content, "utf8");
+
+    console.log(`✅ Saved to ${OUTPUT_FILE}`);
+    console.log(`   Size: ${sizeKB} KB`);
+    console.log(`   Time: ${timeMs} ms`);
+  } catch (err) {
+    console.error("❌ Download failed:", err.message);
+    process.exit(1);
+  }
+}
+
+downloadTailwind();
+```
+
+########################################################################
+# FILE: dump-project.mjs
+########################################################################
+
+```javascript
+// dump-project.mjs
+// Recursively collects all source files in a Next.js project into code.txt.
+// Usage: node dump-project.mjs
+
+import { readdir, readFile, writeFile, stat } from "node:fs/promises";
+import { join, relative, extname, basename } from "node:path";
+
+// ---------------- Configuration ----------------
+
+const OUTPUT_FILE = "code.txt";
+const ROOT = process.cwd();
+
+// Directories to skip entirely (matched by name, at any depth)
+const IGNORE_DIRS = new Set([
+  "node_modules",
+  ".next",
+  ".git",
+  ".turbo",
+  ".vercel",
+  ".swc",
+  "dist",
+  "build",
+  "out",
+  "coverage",
+  ".idea",
+  ".vscode",
+  "public",        // remove if you want images/fonts listed
+]);
+
+// Files to skip by name
+const IGNORE_FILES = new Set([
+  ".DS_Store",
+  "package-lock.json",
+  "yarn.lock",
+  "pnpm-lock.yaml",
+  "bun.lockb",
+  "code.txt",
+  ".env",
+  ".env.local",
+  ".env.production",
+]);
+
+// Only include these extensions (add/remove as you like)
+// Set to null to include everything not ignored.
+const ALLOWED_EXT = new Set([
+  ".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs",
+  ".css", ".scss", ".sass", ".less",
+  ".json", ".md", ".mdx", ".txt",
+  ".html", ".svg",
+  ".yml", ".yaml",
+  ".prisma", ".graphql", ".gql",
+]);
+
+// Max file size to include (skip large generated/asset files)
+const MAX_FILE_SIZE = 500 * 1024; // 500 KB
+
+// ---------------- Helpers ----------------
+
+function shouldIgnoreDir(name) {
+  return IGNORE_DIRS.has(name) || name.startsWith(".");
+}
+
+function shouldIgnoreFile(name) {
+  if (IGNORE_FILES.has(name)) return true;
+  if (name.startsWith(".")) return true; // dotfiles
+  if (ALLOWED_EXT && !ALLOWED_EXT.has(extname(name))) return true;
+  return false;
+}
+
+function extToLang(ext) {
+  const map = {
+    ".js": "javascript", ".jsx": "jsx", ".ts": "typescript",
+    ".tsx": "tsx", ".mjs": "javascript", ".cjs": "javascript",
+    ".css": "css", ".scss": "scss", ".sass": "sass", ".less": "less",
+    ".json": "json", ".md": "markdown", ".mdx": "mdx", ".txt": "text",
+    ".html": "html", ".svg": "xml", ".yml": "yaml", ".yaml": "yaml",
+    ".prisma": "prisma", ".graphql": "graphql", ".gql": "graphql",
+  };
+  return map[ext] || "";
+}
+
+// ---------------- Recursive walker ----------------
+
+async function walk(dir, files = []) {
+  let entries;
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch {
+    return files;
+  }
+
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      if (shouldIgnoreDir(entry.name)) continue;
+      await walk(fullPath, files);
+    } else if (entry.isFile()) {
+      if (shouldIgnoreFile(entry.name)) continue;
+
+      try {
+        const info = await stat(fullPath);
+        if (info.size > MAX_FILE_SIZE) continue;
+      } catch {
+        continue;
+      }
+
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
+// ---------------- File tree renderer ----------------
+
+function buildTree(paths, root) {
+  const tree = {};
+  for (const p of paths) {
+    const rel = relative(root, p).split(/[\\/]/);
+    let node = tree;
+    for (const part of rel) {
+      if (!node[part]) node[part] = {};
+      node = node[part];
+    }
+  }
+
+  function render(node, prefix = "") {
+    const keys = Object.keys(node).sort((a, b) => {
+      const aIsDir = Object.keys(node[a]).length > 0;
+      const bIsDir = Object.keys(node[b]).length > 0;
+      if (aIsDir !== bIsDir) return aIsDir ? -1 : 1;
+      return a.localeCompare(b);
+    });
+
+    let out = "";
+    keys.forEach((key, i) => {
+      const isLast = i === keys.length - 1;
+      const branch = isLast ? "└── " : "├── ";
+      const isDir = Object.keys(node[key]).length > 0;
+      out += `${prefix}${branch}${key}${isDir ? "/" : ""}\n`;
+      if (isDir) {
+        out += render(node[key], prefix + (isLast ? "    " : "│   "));
+      }
+    });
+    return out;
+  }
+
+  return render(tree);
+}
+
+// ---------------- Main ----------------
+
+async function main() {
+  console.log(`📂 Scanning project at: ${ROOT}`);
+
+  const files = await walk(ROOT);
+  files.sort((a, b) => a.localeCompare(b));
+
+  console.log(`✅ Found ${files.length} source files.\n`);
+
+  const projectName = basename(ROOT);
+  const generated = new Date().toISOString();
+
+  let output = "";
+  output += `${"=".repeat(72)}\n`;
+  output += `PROJECT: ${projectName}\n`;
+  output += `GENERATED: ${generated}\n`;
+  output += `FILES: ${files.length}\n`;
+  output += `${"=".repeat(72)}\n\n`;
+
+  // ---------- File tree ----------
+  output += `PROJECT STRUCTURE\n`;
+  output += `${"-".repeat(72)}\n`;
+  output += `${projectName}/\n`;
+  output += buildTree(files, ROOT);
+  output += `\n`;
+
+  // ---------- File contents ----------
+  output += `${"=".repeat(72)}\n`;
+  output += `FILE CONTENTS\n`;
+  output += `${"=".repeat(72)}\n\n`;
+
+  let totalBytes = 0;
+
+  for (const file of files) {
+    const rel = relative(ROOT, file);
+    let content;
+
+    try {
+      content = await readFile(file, "utf8");
+    } catch {
+      content = "// [binary or unreadable file — skipped]";
+    }
+
+    totalBytes += Buffer.byteLength(content);
+
+    output += `${"#".repeat(72)}\n`;
+    output += `# FILE: ${rel}\n`;
+    output += `${"#".repeat(72)}\n\n`;
+
+    const lang = extToLang(extname(file));
+    output += "```" + lang + "\n";
+    output += content.replace(/\n?$/, "\n"); // ensure trailing newline
+    output += "```\n\n";
+  }
+
+  await writeFile(OUTPUT_FILE, output, "utf8");
+
+  const sizeKB = (Buffer.byteLength(output) / 1024).toFixed(2);
+  console.log(`📝 Wrote ${OUTPUT_FILE}`);
+  console.log(`   Files: ${files.length}`);
+  console.log(`   Size : ${sizeKB} KB`);
+  console.log(`   Code : ${(totalBytes / 1024).toFixed(2)} KB`);
+}
+
+main().catch((err) => {
+  console.error("❌ Error:", err);
+  process.exit(1);
+});
+```
+
+########################################################################
+# FILE: eslint.config.mjs
+########################################################################
+
+```javascript
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+```
+
+########################################################################
+# FILE: jsconfig.json
+########################################################################
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+########################################################################
+# FILE: next.config.mjs
+########################################################################
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+```
+
+########################################################################
+# FILE: package.json
+########################################################################
+
+```json
+{
+  "name": "next-js-tutorial",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "tailwindcss": "^4"
+  }
+}
+```
+
+########################################################################
+# FILE: postcss.config.mjs
+########################################################################
+
+```javascript
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+```
+
+########################################################################
+# FILE: README.md
+########################################################################
+
+```markdown
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
