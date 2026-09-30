@@ -52,6 +52,41 @@ const services = [
   },
 ];
 
+export const metadata = {
+  title: "My Services - Meet Our Team of Experts",
+  description: "Meet our team of experts and explore the services we offer to help your business grow.",
+  authors: [{ name: "Your Name", url: "http://localhost:3000" }],
+  keywords: ["services", "team", "experts", "web development", "mobile development", "UI/UX design"],
+  icons: {
+    icon: "/favicon.ico",
+  },
+  metadataBase: {
+    url: "http://localhost:3000",
+  },
+  openGraph: {
+    title: "My Services - Meet Our Team of Experts",
+    description: "Meet our team of experts and explore the services we offer to help your business grow.",
+    url: "http://localhost:3000/services",
+    siteName: "My Services",
+    images: [
+      {
+        url: "http://localhost:3000/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "My Services - Meet Our Team of Experts",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "My Services - Meet Our Team of Experts",
+    description: "Meet our team of experts and explore the services we offer to help your business grow.",
+    images: ["http://localhost:3000/twitter-image.jpg"],
+  },
+}
+
 export default function Service() {
   return (
     <main className="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
