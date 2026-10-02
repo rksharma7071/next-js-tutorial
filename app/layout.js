@@ -20,11 +20,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
             <head>
                 <script
-                dangerouslySetInnerHTML={{
-                    __html: `
+                    dangerouslySetInnerHTML={{
+                        __html: `
                         try {
                             const t = localStorage.getItem('theme');
                             if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -32,12 +32,10 @@ export default function RootLayout({ children }) {
                             }
                         } catch {}
                         `,
-                }}
-            />
+                    }}
+                />
             </head>
-            <body
-                className={`${roboto.variable} ${workSans.variable} ${roboto.className} flex flex-col`}
-            >
+            <body className={`${roboto.variable} ${workSans.variable} ${roboto.className} flex flex-col`}>
                 {children}
             </body>
         </html>

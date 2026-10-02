@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const team = [
   {
@@ -7,6 +8,11 @@ const team = [
     role: "Senior Full Stack Developer",
     image: "/men1.jpeg",
     experience: "5+ Years Experience",
+    links: {
+      "in": "https://linkedin.com/in/rahulsharma",
+      "gh": "https://github.com/rahulsharma",
+      "tw": "https://twitter.com/rahulsharma"
+    }
   },
   {
     id: 2,
@@ -14,6 +20,11 @@ const team = [
     role: "UI/UX Designer",
     image: "/women1.jpg",
     experience: "4+ Years Experience",
+    links: {
+      "in": "https://linkedin.com/in/priyaverma",
+      "gh": "https://github.com/priyaverma",
+      "tw": "https://twitter.com/priyaverma"
+    }
   },
   {
     id: 3,
@@ -21,6 +32,11 @@ const team = [
     role: "Frontend Developer",
     image: "/men2.jpg",
     experience: "3+ Years Experience",
+    links: {
+      "in": "https://linkedin.com/in/amankumar",
+      "gh": "https://github.com/amankumar",
+      "tw": "https://twitter.com/amankumar"
+    }
   },
   {
     id: 4,
@@ -28,6 +44,11 @@ const team = [
     role: "Backend Developer",
     image: "/women2.jpg",
     experience: "4+ Years Experience",
+    links: {
+      "in": "https://linkedin.com/in/nehasingh",
+      "gh": "https://github.com/nehasingh",
+      "tw": "https://twitter.com/nehasingh"
+    }
   },
 ];
 
@@ -121,35 +142,29 @@ export default function Service() {
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition duration-500 group-hover:scale-105"
+                  loading="eager"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-black/60" />
               </div>
 
               <div className="p-5 text-center">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
-                  {member.name}
-                </h3>
-
-                <p className="mt-1 text-sm font-semibold text-teal-600 dark:text-teal-400">
-                  {member.role}
-                </p>
-
-                <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-                  {member.experience}
-                </p>
-
+                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">{member.name}</h3>
+                <p className="mt-1 text-sm font-semibold text-teal-600 dark:text-teal-400">{member.role}</p>
+                <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{member.experience}</p>
                 <div className="mt-5 flex justify-center gap-2">
-                  {["in", "gh", "tw"].map((label) => (
+                  {Object.entries(member.links).map(([label, url]) => (
                     <a
                       key={label}
-                      href="#"
+                      href={url}
                       aria-label={label}
                       className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-xs font-bold text-slate-700 transition
                              hover:bg-teal-50 hover:text-teal-600
                              dark:bg-slate-800 dark:text-slate-300
                              dark:hover:bg-slate-700 dark:hover:text-teal-400"
                     >
-                      {label}
+                      {label == "in" && <FaLinkedin className="h-4 w-4" />}
+                      {label == "gh" && <FaGithub className="h-4 w-4" />}
+                      {label == "tw" && <FaTwitter className="h-4 w-4" />}
                     </a>
                   ))}
                 </div>

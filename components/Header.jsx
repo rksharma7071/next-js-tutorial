@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -22,6 +23,8 @@ export default function Header() {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "Client Component", href: "/clientcomp" },
+    { label: "Server Component", href: "/servercomp" },
     { label: "Service", href: "/service" },
     { label: "Contact", href: "/contact" },
   ];
@@ -69,10 +72,9 @@ export default function Header() {
               <button
                 onClick={toggle}
                 aria-label="Toggle theme"
-                className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50
-                 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                className="rounded-full border border-slate-200 bg-white p-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
               >
-                {dark ? "☀️ Light" : "🌙 Dark"}
+                {dark ? <FaSun /> : <FaMoon />}
               </button>
               <Link
                 className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-teal-700 hover:shadow-md dark:bg-teal-500 dark:hover:bg-teal-400"
